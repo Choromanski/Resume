@@ -367,9 +367,9 @@
 %% Define helper macros a user can change easily
 % Header
 \newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{.4mm}
-\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
-\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
+\newcommand{\acvHeaderAfterNameSkip}{-.5mm}
+\newcommand{\acvHeaderAfterPositionSkip}{-.5mm}
+\newcommand{\acvHeaderAfterAddressSkip}{-1.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
@@ -577,7 +577,7 @@
   \end{tabular*}%
 }
 % Define an entry of cv information without description
-% Usage: \cventrywork{<position>}{<title>}{<location>}{<date>}{<description>}
+% Usage: \cventrywork{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cventrywork}[4]{%
   \vspace{-3.0mm}
   \setlength\tabcolsep{0pt}
