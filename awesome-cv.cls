@@ -305,6 +305,7 @@
 % Usage: \linkedin{<linked-in-nick>}
 \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 
+% Defines writer's twitter (optional)
 % Usage: \twitter{<twitter handle>}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}
 
@@ -320,7 +321,25 @@
 % Usage: \xing{<xing name>}
 \newcommand*{\xing}[1]{\def\@xing{#1}}
 
-% Defines writer's twitter (optional)
+% Defines writer's medium profile (optional)
+% Usage: \medium{<medium account>}
+\newcommand*{\medium}[1]{\def\@medium{#1}}
+
+% Defines writer's google scholar profile (optional)
+% Usage: \googlescholar{<googlescholar userid>}{<googlescholar username>}
+% e.g.https://scholar.google.co.uk/citations?user=wpZDx1cAAAAJ
+% would be \googlescholar{wpZDx1cAAAAJ}{Name-to-display-next-icon}
+% If 'googlescholar-name' is not provided than it defaults to
+% '\firstname \lastname'
+\newcommand*{\googlescholar}[2]{%
+  \def\@googlescholarid{#1}%
+  \ifthenelse{\equal{#2}{}}{%
+    \def\@googlescholarname{\@firstname~\@lastname}%
+  }{%
+    \def\@googlescholarname{#2}%
+  }%
+}
+
 % Defines writer's extra informations (optional)
 % Usage: \extrainfo{<extra informations>}
 \newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
@@ -369,9 +388,9 @@
 %% Define helper macros a user can change easily
 % Header
 \newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{-.5mm}
-\newcommand{\acvHeaderAfterPositionSkip}{-.5mm}
-\newcommand{\acvHeaderAfterAddressSkip}{-1.5mm}
+\newcommand{\acvHeaderAfterNameSkip}{.4mm}
+\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
+\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
@@ -569,7 +588,7 @@
 \newcommand*{\cventry}[5]{%
   \vspace{-3.0mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{-2pt}
+  \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
@@ -624,12 +643,10 @@
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \setstretch{0.9}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2cm} L{\textwidth - 5cm} R{3cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
 }{%
     \end{tabular*}
-  \end{center}   
-  \vspace{-4mm}
+  \end{center}
 }
 % Define a line of cv information(honor, award or something else)
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
@@ -640,11 +657,11 @@
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3.0mm}
+  \vspace{-2.0mm}
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \setstretch{0.8}
+    \setstretch{0.9}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
 }{%
     \end{tabular*}
