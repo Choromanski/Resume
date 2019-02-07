@@ -122,9 +122,9 @@
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
-\definecolor{darkgray}{HTML}{333333}
-\definecolor{gray}{HTML}{484848}
-\definecolor{lightgray}{HTML}{5C5C5C}
+\definecolor{darkgray}{HTML}{111111}
+\definecolor{gray}{HTML}{111111}
+\definecolor{lightgray}{HTML}{111111}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -661,7 +661,7 @@
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \setstretch{0.9}
+    \setstretch{0.7}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
 }{%
     \end{tabular*}
