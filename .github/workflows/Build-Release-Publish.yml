@@ -1,0 +1,57 @@
+name: Build LaTeX Document, Release, and Publish
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v1 
+        with:
+          token: ${{secrets.github_token}} 
+      - name: Compile LaTeX document
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: resume.tex
+          args: -xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -output-directory=output
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.buildnumber.outputs.build_number }}
+          release_name: v${{ steps.buildnumber.outputs.build_number }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./output/resume.pdf
+          asset_name: resume.pdf
+          asset_content_type: application/pdf
+      - name: Clone Website
+        uses: actions/checkout@v1
+        with:
+          repository: Choromanski/website
+          ref: master
+          token: ${{ secrets.GitHub_PAT }}
+      - name: Update, Commit and Push
+        run: |
+          cd ../website
+          mv ../Resume/output/resume.pdf BrianChoromanski_Resume.pdf
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+          git commit -m "Updated Resume" -a
+          git push "https://${GITHUB_ACTOR}:${{ secrets.GitHub_PAT }}@github.com/Choromanski/website.git" HEAD:master
