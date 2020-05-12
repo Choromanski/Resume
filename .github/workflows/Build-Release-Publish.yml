@@ -9,6 +9,8 @@ jobs:
   build-release:
     runs-on: ubuntu-latest
     steps:
+      - name: Install poppler-utils
+        run: sudo apt install poppler-utils
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Generate build number
