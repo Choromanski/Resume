@@ -53,7 +53,11 @@ jobs:
         run: |
           cd ../website
           mv ../Resume/output/resume.pdf BrianChoromanski_Resume.pdf
+          pwd
+          ls
           pdftoppm -jpeg -r 1200 BrianChoromanski_Resume.pdf BrianChoromanski_Resume
+          pwd
+          ls
           mv BrianChoromanski_Resume*.jpg BrianChoromanski_Resume.jpg
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
