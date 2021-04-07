@@ -19,10 +19,11 @@ jobs:
         with:
           token: ${{secrets.github_token}} 
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: resume.tex
-          args: -xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -output-directory=output
+          latexmk_use_xelatex: true
+          args: -output-directory=output
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
