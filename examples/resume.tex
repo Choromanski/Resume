@@ -18,7 +18,7 @@
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, letterpaper]{awesome-cv}
+\documentclass[11pt, a4paper]{awesome-cv}
 
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
@@ -46,31 +46,32 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
-\makeatletter
-\patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
-\makeatother
 
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[rectangle,noedge,right]{Website-QRCode.png}
-\name{Brian}{Choromanski}
-\position{Software Engineer{\enskip\cdotp\enskip}B.S. Computer Science}
-\address{84 Springdale Road, Warrington, PA 18976}
+% \photo[rectangle,edge,right]{./examples/profile}
+\name{Byungjin}{Park}
+\position{Software Architect{\enskip\cdotp\enskip}Security Expert}
+\address{42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA}
 
-\mobile{215-431-5784}
-\email{Brian@Choroman.ski}
-\homepage{www.Choroman.ski}
-\github{choromanski}
-\linkedin{choromanski}
+\mobile{(+82) 10-9030-1843}
+\email{posquit0.bj@gmail.com}
+\homepage{www.posquit0.com}
+\github{posquit0}
+\linkedin{posquit0}
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}
 % \skype{skype-id}
 % \reddit{reddit-id}
 % \extrainfo{extra informations}
+
+\quote{``Be the change that you want to see in the world."}
+
+
 %-------------------------------------------------------------------------------
 \begin{document}
 
@@ -78,20 +79,26 @@
 % Give optional argument to change alignment(C: center, L: left, R: right)
 \makecvheader[C]
 
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Byungjin Park~~~·~~~Résumé}
+  {\thepage}
+
 
 %-------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-%\input{resume/objective.tex}
-\input{resume/education.tex}
-\input{resume/skills.tex}
+\input{resume/summary.tex}
 \input{resume/experience.tex}
-\input{resume/coursework.tex}
-%\input{resume/projects.tex}
-\input{resume/activities.tex}
-%\input{resume/honors.tex}
-%\input{resume/work.tex}
+\input{resume/honors.tex}
+\input{resume/presentation.tex}
+\input{resume/writing.tex}
+\input{resume/committees.tex}
+\input{resume/education.tex}
+\input{resume/extracurricular.tex}
 
 
 %-------------------------------------------------------------------------------
